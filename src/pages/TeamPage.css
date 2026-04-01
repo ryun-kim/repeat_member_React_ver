@@ -1,0 +1,270 @@
+.team-page {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 80px;
+}
+
+.team-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  color: #888;
+}
+
+/* 상단 컨트롤 */
+.team-controls {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #222;
+  background: #fafafa;
+  outline: none;
+  cursor: pointer;
+}
+
+.mode-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mode-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.mode-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: none;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.mode-btn.active {
+  background: #1565c0;
+  border-color: #1565c0;
+  color: white;
+  font-weight: 600;
+}
+
+.attend-count {
+  flex: 1;
+  font-size: 13px;
+  color: #888;
+}
+
+.guest-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #f9a825;
+  background: rgba(249, 168, 37, 0.08);
+  color: #f9a825;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.guest-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.guest-input-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.guest-input-row input:focus {
+  border-color: #1565c0;
+}
+
+.save-btn-sm {
+  padding: 8px 14px;
+  background: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cancel-btn-sm {
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 비어있을 때 */
+.team-empty {
+  background: white;
+  border-radius: 16px;
+  padding: 40px 24px;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+/* 팀 그리드 */
+.team-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.team-grid.cols-1 { grid-template-columns: 1fr; }
+.team-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+
+/* 팀 컬럼 */
+.team-col {
+  background: white;
+  border-radius: 14px;
+  border: 2px solid #eee;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.team-col-header {
+  padding: 10px 14px;
+  color: white;
+}
+
+.team-col-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.team-col-scores {
+  font-size: 11px;
+  opacity: 0.88;
+  margin-top: 2px;
+}
+
+.team-col-members {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 멤버 칩 */
+.member-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  background: #f5f5f5;
+}
+
+.chip-epaulette {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.chip-name {
+  flex: 1;
+  font-weight: 500;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chip-pos {
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.guest-chip {
+  background: rgba(249, 168, 37, 0.08);
+  border: 1px solid rgba(249, 168, 37, 0.3);
+}
+
+.chip-remove {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 2px;
+  flex-shrink: 0;
+}
+
+.chip-remove:hover {
+  color: #d32f2f;
+}
+
+/* 하단 버튼 */
+.team-footer {
+  display: flex;
+  gap: 10px;
+  position: sticky;
+  bottom: 70px;
+}
+
+.divide-btn {
+  flex: 1;
+  padding: 13px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save-btn-main {
+  flex: 1;
+  padding: 13px;
+  background: #1565c0;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save-btn-main:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

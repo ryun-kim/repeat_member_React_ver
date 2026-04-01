@@ -1,0 +1,119 @@
+.ranking-page {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.rank-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  color: #888;
+}
+
+/* 랭킹 카드 */
+.rank-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+/* 섹션 헤더 */
+.rank-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.rank-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rank-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+}
+
+.rank-subtitle {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* TOP 3 목록 */
+.rank-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rank-empty {
+  text-align: center;
+  color: #aaa;
+  font-size: 13px;
+  padding: 16px 0;
+}
+
+/* 랭킹 행 */
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: transform 0.15s;
+}
+
+.rank-row.first {
+  padding: 12px 14px;
+}
+
+.rank-medal {
+  width: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.rank-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.rank-name {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+}
+
+.rank-name.bold {
+  font-size: 15px;
+  font-weight: bold;
+  color: #111;
+}
+
+.rank-value {
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}

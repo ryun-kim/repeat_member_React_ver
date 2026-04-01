@@ -1,0 +1,231 @@
+.member-page {
+  padding-bottom: 20px;
+}
+
+.center-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  color: #888;
+}
+
+/* 시즌 / 정렬 바 */
+.season-bar,
+.sort-bar {
+  background: white;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.season-bar {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.bar-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.chip-row {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #555;
+  transition: all 0.15s;
+}
+
+.chip.active {
+  background: #1565c0;
+  border-color: #1565c0;
+  color: white;
+}
+
+/* 멤버 목록 */
+.member-list {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 멤버 카드 */
+.member-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+/* 상단 */
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.name-row {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.nickname {
+  font-size: 15px;
+  font-weight: bold;
+  color: #222;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.badge.me {
+  background: rgba(21,101,192,0.1);
+  color: #1565c0;
+}
+
+.badge.pos {
+  color: white;
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 18px;
+  line-height: 1;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.icon-btn:hover {
+  background: #f5f5f5;
+}
+
+.card-divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 12px 0;
+}
+
+/* 통계 행 */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #888;
+}
+
+/* 최근 5경기 */
+.recent-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.recent-label {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.recent-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+/* 능력치 배지 */
+.ability-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.ability-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 7px;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.ability-label {
+  color: #888;
+}
+
+.ability-value {
+  font-weight: bold;
+  font-size: 12px;
+}
