@@ -100,6 +100,10 @@
 
 .rank-name {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 14px;
   color: #333;
 }
@@ -116,4 +120,30 @@
   padding: 4px 12px;
   border-radius: 20px;
   flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* 시즌 필터 */
+.rank-season-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.rank-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+}
+
+.rank-chip.active {
+  background: #1976d2;
+  border-color: #1976d2;
+  color: white;
+  font-weight: bold;
 }

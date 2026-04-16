@@ -42,9 +42,9 @@ function calcAttendRate(attendances, totalEvents) {
 
 // ─── 메달 설정 ────────────────────────────────────────────────
 const MEDALS = [
-  { emoji: '🥇', color: '#FFD700', bg: 'rgba(255,215,0,0.08)', border: 'rgba(255,215,0,0.4)' },
-  { emoji: '🥈', color: '#9E9E9E', bg: 'rgba(158,158,158,0.06)', border: 'rgba(158,158,158,0.3)' },
-  { emoji: '🥉', color: '#CD7F32', bg: 'rgba(205,127,50,0.06)', border: 'rgba(205,127,50,0.3)' },
+  { emoji: '🥇', color: '#b8860b', bg: 'rgba(255,215,0,0.15)', border: 'rgba(255,215,0,0.5)' },
+  { emoji: '🥈', color: '#555555', bg: 'rgba(158,158,158,0.12)', border: 'rgba(158,158,158,0.4)' },
+  { emoji: '🥉', color: '#7a4a1e', bg: 'rgba(205,127,50,0.12)', border: 'rgba(205,127,50,0.4)' },
 ];
 
 const RANKING_SECTIONS = [
@@ -93,6 +93,11 @@ const RANKING_SECTIONS = [
 export default function RankingPage() {
   const [summaries, setSummaries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [years, setYears] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+  const [allRecords, setAllRecords] = useState({});
+  const [attMap, setAttMap] = useState({});
+  const [totalEvents, setTotalEvents] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -108,33 +113,50 @@ export default function RankingPage() {
         supabase.from('events').select('id'),
       ]);
 
-      const totalEvents = (events ?? []).length;
+      const totalEv = (events ?? []).length;
+      setTotalEvents(totalEv);
+
+      const yearSet = new Set(
+        (records ?? []).map((r) => r.match_date?.slice(0, 4)).filter(Boolean).map(Number)
+      );
+      setYears([...yearSet].sort((a, b) => b - a));
 
       const recMap = {};
       (records ?? []).forEach((r) => {
         if (!recMap[r.profile_id]) recMap[r.profile_id] = [];
         recMap[r.profile_id].push(r);
       });
+      setAllRecords(recMap);
 
-      const attMap = {};
+      const aMap = {};
       (attendances ?? []).forEach((a) => {
-        if (!attMap[a.profile_id]) attMap[a.profile_id] = [];
-        attMap[a.profile_id].push(a);
+        if (!aMap[a.profile_id]) aMap[a.profile_id] = [];
+        aMap[a.profile_id].push(a);
       });
+      setAttMap(aMap);
 
-      const data = (profiles ?? []).map((p) => ({
-        profile: p,
-        stats: calcStats(recMap[p.id] ?? []),
-        attRate: calcAttendRate(attMap[p.id] ?? [], totalEvents),
-      }));
-
+      const data = (profiles ?? []).map((p) => ({ profile: p }));
       setSummaries(data);
       setLoading(false);
     })();
   }, []);
 
+  const computedSummaries = useMemo(() => {
+    return summaries.map(({ profile }) => {
+      const allRec = allRecords[profile.id] ?? [];
+      const filtered = selectedYear === null
+        ? allRec
+        : allRec.filter((r) => r.match_date?.startsWith(String(selectedYear)));
+      return {
+        profile,
+        stats: calcStats(filtered),
+        attRate: calcAttendRate(attMap[profile.id] ?? [], totalEvents),
+      };
+    });
+  }, [summaries, allRecords, attMap, totalEvents, selectedYear]);
+
   const top3 = (getValue) =>
-    [...summaries]
+    [...computedSummaries]
       .sort((a, b) => getValue(b) - getValue(a))
       .slice(0, 3);
 
@@ -142,6 +164,21 @@ export default function RankingPage() {
 
   return (
     <div className="ranking-page">
+      {/* 시즌 필터 */}
+      <div className="rank-season-bar">
+        <button
+          className={`rank-chip ${selectedYear === null ? 'active' : ''}`}
+          onClick={() => setSelectedYear(null)}
+        >전체</button>
+        {years.map((y) => (
+          <button
+            key={y}
+            className={`rank-chip ${selectedYear === y ? 'active' : ''}`}
+            onClick={() => setSelectedYear(y)}
+          >{y}</button>
+        ))}
+      </div>
+
       {RANKING_SECTIONS.map((section) => {
         const entries = top3(section.getValue);
         return (
