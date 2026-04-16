@@ -117,7 +117,7 @@ export default function MemberPage() {
         { data: evList },
       ] = await Promise.all([
         supabase.from('profiles').select().order('created_at'),
-        supabase.from('member_records').select(),
+        supabase.from('members_record').select(),
         supabase.from('member_abilities').select(),
         supabase.from('attendance').select('profile_id, status, event_id'),
         supabase.from('events').select('id, date'),

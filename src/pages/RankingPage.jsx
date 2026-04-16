@@ -108,7 +108,7 @@ export default function RankingPage() {
         { data: events },
       ] = await Promise.all([
         supabase.from('profiles').select('id, nickname, position, detail_position'),
-        supabase.from('member_records').select(),
+        supabase.from('members_record').select(),
         supabase.from('attendance').select('profile_id, status'),
         supabase.from('events').select('id'),
       ]);

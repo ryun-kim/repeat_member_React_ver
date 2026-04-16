@@ -177,7 +177,7 @@ export default function MatchPage() {
       const matchDate = selectedEvent.date;
       const allIds = TEAM_KEYS.flatMap((k) => teamConfig[k] ?? []).filter((id) => !!profileMap[id]);
       if (allIds.length > 0) {
-        await supabase.from('member_records').delete().eq('match_date', matchDate).in('profile_id', allIds);
+        await supabase.from('members_record').delete().eq('match_date', matchDate).in('profile_id', allIds);
       }
 
       const records = [];
@@ -191,7 +191,7 @@ export default function MatchPage() {
         });
       });
       if (records.length > 0) {
-        await supabase.from('member_records').insert(records);
+        await supabase.from('members_record').insert(records);
       }
 
       alert('저장되었습니다');
